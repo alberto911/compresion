@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compresión</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if notice %>
+    <p class="alert alert-success"><span class="close" data-dismiss="alert">&times;</span><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><span class="close" data-dismiss="alert">&times;</span><%= alert %></p>
+  <% end %>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" id="home"><%= link_to 'Inicio', root_path %></li>
+    <li role="presentation" id="stats"><%= link_to 'Gráficas', stats_path %></li>
+    <li role="presentation" id="data"><%= link_to 'Datos', data_path %></li>
+  </ul>
+
+  <div class="container">
+  	<%= yield %>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<script>
+	$("#stats").addClass("active");
+</script>
+
+<div class="page-header">
+  <h2>Estadísticas
+    <%= link_to 'Exportar a PDF', stats_path(format: :pdf), class: "btn btn-default btn-sm" %>
+  </h2>
+</div>
+
+<%= column_chart @k_means, library: {title: 'Tiempo de ejecución por iteración de K-Means',
+	vAxis: {title: 'Tiempo (en segundos)'}, hAxis: {title: 'Cantidad de pixeles y colores'}} %>
+<%= column_chart @tiempo, library: {title: 'Tiempo de ejecución total de Median cut',
+  vAxis: {title: 'Tiempo (en segundos)'}, hAxis: {title: 'Cantidad de pixeles y colores'}} %>
+<%= column_chart @bytes_k, library: {title: 'Factor de compresión por cantidad de colores (K-means)',
+  vAxis: {title: 'Tamaño original / tamaño final'}, hAxis: {title: 'Cantidad de colores'}} %>
+<%= column_chart @bytes_m, library: {title: 'Factor de compresión por cantidad de colores (Median cut)',
+  vAxis: {title: 'Tamaño original / tamaño final'}, hAxis: {title: 'Cantidad de colores'}} %>

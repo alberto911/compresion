@@ -1,0 +1,71 @@
+<script>
+	$("#data").addClass("active");
+
+  $(document).ready( function () {
+    $('#stat-table').DataTable( {
+      scrollY: 372,
+      language: {
+			  "sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar _MENU_ registros",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando _START_ a _END_ de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando 0 de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar:",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+						"sFirst":    "Primero",
+						"sLast":     "Último",
+						"sNext":     "Siguiente",
+						"sPrevious": "Anterior"
+				},
+				"oAria": {
+						"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+						"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+		  }
+    });
+  } );
+</script>
+
+<div class="page-header">
+  <h2>Estadísticas
+    <%= link_to 'Exportar a CSV', data_path(format: :csv), class: "btn btn-default btn-sm" %>
+  </h2>
+</div>
+
+<table id="stat-table" class="table table-hover">
+	<thead>
+    <tr>
+      <th>Cuantificación</th>
+      <th>Tramado</th>
+      <th>Pixeles</th>
+      <th>Colores</th>
+      <th>Iteraciones</th>
+      <th>Tiempo</th>
+      <th>Tamaño inicial</th>
+      <th>Tamaño final</th>
+      <th>Factor de compresión</th>
+    </tr>
+	</thead>
+    
+  <tbody>
+    <% @estadisticas.each do |stat| %>
+      <tr>
+        <td><%= stat.cuantificacion %></td>
+        <td><%= stat.tramado %></td>
+        <td><%= stat.pixeles %></td>
+        <td><%= stat.colores %></td>
+        <td><%= stat.iteraciones %></td>
+        <td><%= stat.tiempo %></td>
+        <td><%= stat.bytes_inicio %></td>
+        <td><%= stat.bytes_fin %></td>
+        <td><%= ((stat.bytes_inicio + 0.0) / stat.bytes_fin).round(3) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

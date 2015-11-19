@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<%= javascript_include_tag "http://www.google.com/jsapi"%>
+		<%= wicked_pdf_javascript_include_tag 'chartkick'%>
+    <meta charset="utf-8">
+  </head>
+  <body>
+	<div style="width: 820px; margin: auto;">
+      <%= yield %>
+    </div>   	
+  </body>
+</html>
