@@ -1,25 +1,28 @@
 class EstadisticasController < ApplicationController
   def index
-	  @estadisticas = Estadistica.all
+    @estadisticas = Estadistica.all
     respond_to do |format|
       format.html
-      format.csv { send_data @estadisticas.to_csv }    
-	  end
+      format.csv { send_data @estadisticas.to_csv }
+    end
   end
 
   def stats
-	  @k_means = Estadistica.tiempo_k_means
-	  @tiempo = Estadistica.tiempo_median_cut
-	  @bytes_k = Estadistica.bytes_k_means
-    @bytes_m = Estadistica.bytes_median_cut
+    time_query = TimeStatistic.new
+    @time_k = time_query.get_statistic('K-Means', 'tiempo / iteraciones')
+    @time_m = time_query.get_statistic('Median cut', 'tiempo')
+
+    size_query = SizeStatistic.new
+    @bytes_k = size_query.get_statistic('K-Means')
+    @bytes_m = size_query.get_statistic('Median cut')
 
     respond_to do |format|
       format.html
       format.pdf do
-				render pdf: 'stats',
-				javascript_delay: 1000,
+        render pdf: 'stats',
+        javascript_delay: 1000,
         page_size: 'Letter',
-				layout: 'layouts/application.pdf.erb'
+        layout: 'layouts/application.pdf.erb'
       end
     end
   end

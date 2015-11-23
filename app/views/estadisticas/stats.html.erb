@@ -8,9 +8,9 @@
   </h2>
 </div>
 
-<%= column_chart @k_means, library: {title: 'Tiempo de ejecución por iteración de K-Means',
+<%= column_chart @time_k, library: {title: 'Tiempo de ejecución por iteración de K-Means',
 	vAxis: {title: 'Tiempo (en segundos)'}, hAxis: {title: 'Cantidad de pixeles y colores'}} %>
-<%= column_chart @tiempo, library: {title: 'Tiempo de ejecución total de Median cut',
+<%= column_chart @time_m, library: {title: 'Tiempo de ejecución total de Median cut',
   vAxis: {title: 'Tiempo (en segundos)'}, hAxis: {title: 'Cantidad de pixeles y colores'}} %>
 <%= column_chart @bytes_k, library: {title: 'Factor de compresión por cantidad de colores (K-means)',
   vAxis: {title: 'Tamaño original / tamaño final'}, hAxis: {title: 'Cantidad de colores'}} %>
