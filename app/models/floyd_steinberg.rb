@@ -1,8 +1,7 @@
 require_relative 'dithering'
+require_relative 'ditherer'
 
-class FloydSteinberg
-  attr_reader :name
-
+class FloydSteinberg < Ditherer
   def initialize
     @name = 'Floyd-Steinberg'
   end

@@ -1,6 +1,6 @@
-require_relative 'estadistica'
+require_relative 'abstract_statistic'
 
-class SizeStatistic < Estadistica
+class SizeStatistic < AbstractStatistic
   def data_query(algorithm, average_params)
     Estadistica.where("cuantificacion = ?", algorithm).group(:tramado, :colores).average("bytes_inicio / bytes_fin")
   end

@@ -1,8 +1,7 @@
 require_relative 'dithering'
+require_relative 'ditherer'
 
-class RandomDithering
-  attr_reader :name
-
+class RandomDithering < Ditherer
   def initialize
     @name = 'Aleatorio'
   end

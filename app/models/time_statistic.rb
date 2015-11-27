@@ -1,6 +1,6 @@
-require_relative 'estadistica'
+require_relative 'abstract_statistic'
 
-class TimeStatistic < Estadistica
+class TimeStatistic < AbstractStatistic
   def data_query(algorithm, average_params)
     Estadistica.where("cuantificacion = ?", algorithm).group(:tramado, :pixeles, :colores).average(average_params)
   end

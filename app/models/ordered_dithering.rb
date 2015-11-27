@@ -1,8 +1,7 @@
 require_relative 'dithering'
+require_relative 'ditherer'
 
-class OrderedDithering
-  attr_reader :name
-
+class OrderedDithering < Ditherer
   def initialize
     @name = 'Ordenado'
   end
